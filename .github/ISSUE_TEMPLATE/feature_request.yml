@@ -1,0 +1,19 @@
+name: Feature-Idee
+description: Vorschlag für eine neue Funktion
+labels: ["feature"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Was willst du machen können?
+      description: Beschreib das Problem oder den Wunsch aus Sicht eines Nutzers.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Wie könnte es aussehen?
+  - type: textarea
+    id: extra
+    attributes:
+      label: Sonstiges
