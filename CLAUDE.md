@@ -32,8 +32,14 @@ Planning happens in a separate Claude chat; Dennis pastes task prompts here. For
 ## Git & GitHub rules (strict)
 - **Never add Claude as co-author** (also enforced in `.claude/settings.json`). No `Co-Authored-By: Claude ...` trailer, no "Generated with Claude Code" line, no Claude attribution in commits, PR titles or PR descriptions.
 - Conventional Commits: `feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`, `ci:` (scope optional, e.g. `feat(watchlist): ...`).
-- Never commit directly to `main`. Work on branches `feat/...`, `fix/...`, `docs/...`, `chore/...` and merge via pull request.
+- Never commit directly to `main`. Work on branches `feat/...`, `fix/...`, `docs/...`, `chore/...`, `ci/...`, `refactor/...`, `test/...` and merge via pull request.
 - Every PR references its issue (`Closes #12`) and must pass CI.
+- `main` is protected by a GitHub ruleset: PR required, status check "Typecheck, build & lint" must pass, no force push (repo admin may bypass in emergencies).
+
+### Pushing
+- Push only with `node scripts/push-branch.mjs [branch]` (defaults to the current branch). It allows the branch prefixes above, rejects `main`, any flags (no force push) and never deletes remote branches.
+- Raw `git push` is blocked for Claude in both shells: in Bash by the Sixth Sense plugin hook (`block-dangerous-git.js`, not configurable), in Bash and PowerShell by the project hook `.claude/hooks/guard-git-push.mjs` (registered in `.claude/settings.json`). Do not edit the plugin; change the rules in the project files instead.
+- Remote branch deletion, force pushes and pushes to `main` stay with Dennis.
 
 ## Code conventions
 - Code, identifiers, comments and commit messages in English. UI text in German.

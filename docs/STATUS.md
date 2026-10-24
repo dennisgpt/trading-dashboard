@@ -19,6 +19,7 @@ Board: [Trading Dashboard](https://github.com/users/dennisgpt/projects/1)
   - GitHub Project „Trading Dashboard“ mit allen Issues
   - CI-Lauf auf `main` geprüft
   - Ruleset für `main`: Pull Request Pflicht, Status-Check „Typecheck, build & lint“, kein Force-Push
+- [x] Push-Guardrails für Claude: Push nur über `scripts/push-branch.mjs` (Feature-Branches), Projekt-Hook blockiert rohes `git push` in Bash und PowerShell
 
 ## In Arbeit
 - nichts
