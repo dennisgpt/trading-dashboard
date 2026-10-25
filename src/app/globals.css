@@ -1,0 +1,179 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/inter";
+
+/* Dark is the default theme; light is enabled with class "light" / data-theme="light" on <html>. */
+@custom-variant dark (&:where(:root:not(.light), :root:not(.light) *));
+@custom-variant light (&:where(.light, .light *));
+
+/* Graphite Glass design tokens (docs/design.md) */
+:root {
+  --gg-bg: #1a1b1f;
+  --gg-panel: rgba(48, 50, 56, 0.52);
+  --gg-chrome: rgba(34, 35, 40, 0.6);
+  --gg-border: rgba(255, 255, 255, 0.08);
+  --gg-text: #f1f2f4;
+  --gg-muted: rgba(232, 234, 238, 0.66);
+  --gg-hover: rgba(255, 255, 255, 0.065);
+  --gg-sel: rgba(168, 207, 255, 0.15);
+  --gg-accent: #a8cfff;
+  --gg-accent-fg: #b9d8ff;
+  --gg-on-accent: #0f2236;
+  --gg-input: rgba(255, 255, 255, 0.05);
+  --gg-up: #30d158;
+  --gg-down: #ff6961;
+  --gg-on-up: #04210e;
+  --gg-on-down: #2b0705;
+  --gg-amber: #ffb340;
+  --gg-grid: rgba(255, 255, 255, 0.05);
+  --gg-highlight: rgba(255, 255, 255, 0.06);
+}
+
+:root.light,
+:root[data-theme="light"] {
+  --gg-bg: #e8eaee;
+  --gg-panel: rgba(248, 249, 251, 0.6);
+  --gg-chrome: rgba(244, 245, 248, 0.55);
+  --gg-border: rgba(20, 25, 35, 0.09);
+  --gg-text: #15171c;
+  --gg-muted: rgba(25, 28, 36, 0.66);
+  --gg-hover: rgba(20, 25, 35, 0.05);
+  --gg-sel: rgba(168, 207, 255, 0.38);
+  --gg-accent: #a8cfff; /* surfaces only, never text on light backgrounds */
+  --gg-accent-fg: #2a619c;
+  --gg-on-accent: #0f2236;
+  --gg-input: rgba(255, 255, 255, 0.65);
+  --gg-up: #13853a;
+  --gg-down: #d0312d;
+  --gg-on-up: #ffffff;
+  --gg-on-down: #ffffff;
+  --gg-amber: #a15c00;
+  --gg-grid: rgba(20, 25, 35, 0.07);
+  --gg-highlight: rgba(255, 255, 255, 0.7);
+}
+
+/* shadcn/ui variables, mapped onto the design tokens */
+:root {
+  --background: var(--gg-bg);
+  --foreground: var(--gg-text);
+  --card: var(--gg-panel);
+  --card-foreground: var(--gg-text);
+  --popover: var(--gg-bg);
+  --popover-foreground: var(--gg-text);
+  --primary: var(--gg-accent);
+  --primary-foreground: var(--gg-on-accent);
+  --secondary: var(--gg-input);
+  --secondary-foreground: var(--gg-text);
+  --muted: var(--gg-hover);
+  --muted-foreground: var(--gg-muted);
+  --accent: var(--gg-hover);
+  --accent-foreground: var(--gg-text);
+  --destructive: var(--gg-down);
+  --border: var(--gg-border);
+  --input: var(--gg-border);
+  --ring: var(--gg-accent-fg);
+  --chart-1: var(--gg-accent-fg);
+  --chart-2: var(--gg-up);
+  --chart-3: var(--gg-down);
+  --chart-4: var(--gg-amber);
+  --chart-5: var(--gg-muted);
+  --radius: 0.625rem;
+  --sidebar: var(--gg-chrome);
+  --sidebar-foreground: var(--gg-text);
+  --sidebar-primary: var(--gg-accent);
+  --sidebar-primary-foreground: var(--gg-on-accent);
+  --sidebar-accent: var(--gg-hover);
+  --sidebar-accent-foreground: var(--gg-text);
+  --sidebar-border: var(--gg-border);
+  --sidebar-ring: var(--gg-accent-fg);
+}
+
+@theme inline {
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+  --font-heading: var(--font-sans);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Graphite Glass extras */
+  --color-panel: var(--gg-panel);
+  --color-chrome: var(--gg-chrome);
+  --color-sel: var(--gg-sel);
+  --color-accent-fg: var(--gg-accent-fg);
+  --color-on-accent: var(--gg-on-accent);
+  --color-input-bg: var(--gg-input);
+  --color-up: var(--gg-up);
+  --color-down: var(--gg-down);
+  --color-on-up: var(--gg-on-up);
+  --color-on-down: var(--gg-on-down);
+  --color-amber: var(--gg-amber);
+  --color-grid: var(--gg-grid);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --radius-panel: 14px;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+  }
+  body {
+    @apply bg-background text-[13px] text-foreground antialiased select-none;
+    /* All numbers line up in columns (docs/design.md) */
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    border-radius: var(--radius-panel);
+    border: 1px solid var(--gg-border);
+    background: var(--gg-panel);
+    backdrop-filter: blur(28px) saturate(170%);
+    box-shadow: inset 0 1px 0 var(--gg-highlight);
+  }
+
+  .chrome {
+    background: var(--gg-chrome);
+    backdrop-filter: blur(28px) saturate(170%);
+  }
+}

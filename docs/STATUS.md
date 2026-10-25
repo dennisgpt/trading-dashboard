@@ -29,7 +29,7 @@ Board: [Trading Dashboard](https://github.com/users/dennisgpt/projects/1)
 - [x] #2 Provider-Interface für Marktdaten (ADR 0003, Registry, MockProvider, Vitest)
 - [x] #3 Datenmodell (`docs/datenmodell.md`)
 - [x] #4 Design „Graphite Glass“ (`docs/design.md`)
-- [ ] #5 Tailwind + shadcn/ui einrichten
+- [x] #5 Tailwind v4 + shadcn/ui, Theme-Tokens, Hell/Dunkel-Umschalter, App-Shell
 - [ ] #6 Glas-Effekt mit window-vibrancy
 
 ## Offene Entscheidungen
