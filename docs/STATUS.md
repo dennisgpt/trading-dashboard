@@ -27,7 +27,7 @@ Board: [Trading Dashboard](https://github.com/users/dennisgpt/projects/1)
 ## Als Nächstes (Phase 3 – Architektur & Design)
 - [x] #1 Ordnerstruktur & Architektur festlegen (ADR 0002)
 - [x] #2 Provider-Interface für Marktdaten (ADR 0003, Registry, MockProvider, Vitest)
-- [ ] #3 Datenmodell (Instrument, Kurs, Watchlist, Paper-Konto)
+- [x] #3 Datenmodell (`docs/datenmodell.md`)
 - [ ] #4 Design-Mockups (Glas-Look, Hell/Dunkel)
 - [ ] #5 Tailwind + shadcn/ui einrichten
 - [ ] #6 Glas-Effekt mit window-vibrancy

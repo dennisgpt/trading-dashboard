@@ -32,6 +32,18 @@ export interface Instrument {
   providerId?: string;
 }
 
+/** Unique key of an instrument across providers: "<providerId or market>:<symbol>". */
+export function instrumentKey(instrument: Instrument): string {
+  return `${instrument.providerId ?? instrument.market}:${instrument.symbol}`;
+}
+
+export interface Watchlist {
+  id: string;
+  name: string;
+  /** In display order. */
+  instruments: Instrument[];
+}
+
 export interface Quote {
   symbol: string;
   price: number;

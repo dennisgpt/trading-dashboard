@@ -51,6 +51,7 @@ Planning happens in a separate Claude chat; Dennis pastes task prompts here. For
 - Market data access only through provider adapters (one interface, one adapter per source: Binance, Finnhub, Twelve Data ...). UI never calls an API directly. Interface and registry: `docs/adr/0003-provider-interface.md`.
 - Logic in `src/core/` gets Vitest tests next to the code (`*.test.ts`).
 - Every price shown carries its data mode: `live` or `delayed`.
+- Data model: `docs/datenmodell.md`. Timestamps are Unix ms (UTC); paper account money is integer minor units (`MinorUnits`, `src/lib/money.ts`), prices and quantities are plain numbers.
 
 ## Security
 - Never commit API keys, tokens or `.env` files. No keys shipped with the app.
