@@ -61,6 +61,7 @@ Planning happens in a separate Claude chat; Dennis pastes task prompts here. For
 - Never commit API keys, tokens or `.env` files. No keys shipped with the app.
 - Users enter their own API keys in the settings; keys are stored in the OS keychain (Windows Credential Manager / macOS Keychain), never in plain files or localStorage.
 - Keep Tauri capabilities minimal: only grant permissions a feature actually needs.
+- The CSP in `src-tauri/tauri.conf.json` lists every external domain (`connect-src`). A new data source must add exactly its domains there.
 
 ## Trading
 - Paper trading only for now (own simulated engine). Real order execution is out of scope until explicitly decided.

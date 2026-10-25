@@ -1,5 +1,13 @@
-import type { MarketDataProvider, QuoteListener, Unsubscribe } from "@/core/market/provider";
-import { TIMEFRAME_MS, type Candle, type DataMode, type Instrument, type Market, type Timeframe } from "@/core/market/types";
+import type { CandleListener, MarketDataProvider, QuoteListener, Unsubscribe } from "@/core/market/provider";
+import {
+  TIMEFRAME_MS,
+  type Candle,
+  type ConnectionStatus,
+  type DataMode,
+  type Instrument,
+  type Market,
+  type Timeframe,
+} from "@/core/market/types";
 
 export interface MockProviderOptions {
   id?: string;
@@ -84,6 +92,35 @@ export class MockProvider implements MarketDataProvider {
       }
     }, this.quoteIntervalMs);
     return () => clearInterval(timer);
+  }
+
+  subscribeCandles(symbol: string, timeframe: Timeframe, onCandle: CandleListener): Unsubscribe {
+    const step = TIMEFRAME_MS[timeframe];
+    const random = seededRandom(`${symbol}:${timeframe}:live`);
+    let candle: Candle | null = null;
+    const timer = setInterval(() => {
+      const time = Math.floor(this.now() / step) * step;
+      if (!candle || candle.time !== time) {
+        const open = candle?.close ?? basePrice(symbol);
+        candle = { time, open, high: open, low: open, close: open, volume: 0 };
+      }
+      const close = candle.close * (1 + (random() - 0.5) * 0.002);
+      candle = {
+        ...candle,
+        close,
+        high: Math.max(candle.high, close),
+        low: Math.min(candle.low, close),
+        volume: candle.volume + Math.round(random() * 10),
+      };
+      onCandle(candle);
+    }, this.quoteIntervalMs);
+    return () => clearInterval(timer);
+  }
+
+  /** No real connection: always connected. */
+  subscribeStatus(listener: (status: ConnectionStatus) => void): Unsubscribe {
+    listener("connected");
+    return () => {};
   }
 }
 

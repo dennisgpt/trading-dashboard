@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { getWindowEffect } from "@/lib/native/window";
+import { trackConnectionStatus } from "@/stores/connection";
 import { AppShell } from "./app-shell";
+import { marketRegistry } from "./market";
 import { useTheme } from "./use-theme";
 
 export function App() {
@@ -13,6 +15,8 @@ export function App() {
       if (effect !== "none") document.documentElement.dataset.glass = effect;
     });
   }, []);
+
+  useEffect(() => trackConnectionStatus(marketRegistry), []);
 
   return <AppShell />;
 }

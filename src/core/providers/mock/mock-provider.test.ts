@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { Quote } from "@/core/market/types";
+import type { Candle, Quote } from "@/core/market/types";
 import { MockProvider } from "./mock-provider";
 
 const NOW = Date.UTC(2026, 9, 25, 12, 34, 56);
@@ -54,5 +54,27 @@ describe("MockProvider", () => {
     unsubscribe();
     vi.advanceTimersByTime(3000);
     expect(quotes).toHaveLength(6);
+  });
+
+  it("streams a running candle that starts a new one each period", () => {
+    let now = Date.UTC(2026, 9, 25, 12, 0, 30);
+    const provider = new MockProvider({ quoteIntervalMs: 1000, now: () => now });
+    const candles: Candle[] = [];
+    const unsubscribe = provider.subscribeCandles("AAPL", "1m", (c) => candles.push(c));
+
+    vi.advanceTimersByTime(2000);
+    now += 60_000;
+    vi.advanceTimersByTime(1000);
+    unsubscribe();
+
+    expect(candles.map((c) => c.time)).toEqual([Date.UTC(2026, 9, 25, 12, 0), Date.UTC(2026, 9, 25, 12, 0), Date.UTC(2026, 9, 25, 12, 1)]);
+    expect(candles[2].open).toBe(candles[1].close);
+    for (const c of candles) expect(c.high).toBeGreaterThanOrEqual(Math.max(c.open, c.close));
+  });
+
+  it("is always connected", () => {
+    const listener = vi.fn();
+    new MockProvider().subscribeStatus(listener);
+    expect(listener).toHaveBeenCalledExactlyOnceWith("connected");
   });
 });

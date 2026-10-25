@@ -1,9 +1,11 @@
-import type { Candle, DataMode, Instrument, Market, Quote, Timeframe } from "./types";
+import type { Candle, ConnectionStatus, DataMode, Instrument, Market, Quote, Timeframe } from "./types";
 
 /** Stops a subscription. Calling it more than once has no effect. */
 export type Unsubscribe = () => void;
 
 export type QuoteListener = (quote: Quote) => void;
+
+export type CandleListener = (candle: Candle) => void;
 
 /**
  * One adapter per market data source (Binance, Finnhub, Twelve Data ...).
@@ -29,4 +31,16 @@ export interface MarketDataProvider {
    * Reconnects on its own; errors are reported through `onError` and do not end the subscription.
    */
   subscribeQuotes(symbols: readonly string[], onQuote: QuoteListener, onError?: (error: Error) => void): Unsubscribe;
+
+  /**
+   * Streams updates of the running (last, still open) candle. When a new period starts the
+   * listener receives a candle with a later `time`; callers append it instead of replacing.
+   */
+  subscribeCandles(symbol: string, timeframe: Timeframe, onCandle: CandleListener): Unsubscribe;
+
+  /**
+   * Reports the state of the streaming connection: immediately with the current state, then on
+   * every change. Providers without a persistent connection report "connected".
+   */
+  subscribeStatus(listener: (status: ConnectionStatus) => void): Unsubscribe;
 }
