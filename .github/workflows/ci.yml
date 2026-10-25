@@ -35,6 +35,9 @@ jobs:
       - name: Typecheck & build frontend
         run: npm run build
 
+      - name: Unit tests
+        run: npm run test
+
       - name: Rust format check
         working-directory: src-tauri
         run: cargo fmt --check
