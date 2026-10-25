@@ -1,18 +1,22 @@
 import { Moon, Sun } from "lucide-react";
 import { PaperBadge } from "@/components/badges";
 import { Button } from "@/components/ui/button";
+import { isMacDesktop } from "@/lib/native/platform";
+import { cn } from "@/lib/utils";
 import { useTheme } from "./use-theme";
 import { WindowControls } from "./window-controls";
 
 /**
- * Custom title bar of the undecorated window. `data-tauri-drag-region` only applies to the
- * element it is set on, so every non-interactive child carries it too.
+ * Custom title bar. Windows: undecorated window with our own buttons on the right.
+ * macOS: native traffic lights on the left (overlay title bar), so the content is indented.
+ * `data-tauri-drag-region` only applies to the element it is set on, so every
+ * non-interactive child carries it too.
  */
 export function TitleBar() {
   const { theme, toggle } = useTheme();
 
   return (
-    <header data-tauri-drag-region className="chrome flex h-10 shrink-0 items-center gap-3 border-b border-border pl-3 pr-3">
+    <header data-tauri-drag-region className={cn("chrome flex h-10 shrink-0 items-center gap-3 border-b border-border pr-3", isMacDesktop ? "pl-20" : "pl-3")}>
       <span data-tauri-drag-region className="text-[13px] font-semibold">
         Trading Dashboard
       </span>
@@ -28,7 +32,7 @@ export function TitleBar() {
       >
         {theme === "dark" ? <Sun /> : <Moon />}
       </Button>
-      <WindowControls />
+      {!isMacDesktop && <WindowControls />}
     </header>
   );
 }

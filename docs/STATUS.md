@@ -29,6 +29,8 @@ Board: [Trading Dashboard](https://github.com/users/dennisgpt/projects/1)
   - #5 Tailwind v4 + shadcn/ui, Theme-Tokens, Hell/Dunkel-Umschalter, App-Shell mit Platzhalter-Panels
   - #6 Glas-Effekt (Mica / Vibrancy), eigene Titelleiste mit Fensterbuttons
 
+- [x] Offene Punkte aus Phase 3 entschieden: macOS mit nativen Ampel-Buttons (ADR 0004), Paper-Konto in USD mit EUR/USD-Umrechnung (`docs/anforderungen.md`), Milestones Phase 2 und 3 geschlossen
+
 ## In Arbeit
 - nichts
 
@@ -44,9 +46,7 @@ Board: [Trading Dashboard](https://github.com/users/dennisgpt/projects/1)
 
 ## Offene Entscheidungen
 - App-Name (später)
-- macOS: eigene Fensterbuttons rechts wie unter Windows, oder native Ampel-Buttons links (`titleBarStyle: Overlay`)?
 - Windows 10: solider Hintergrund statt Acrylic (Acrylic ruckelt beim Verschieben) – so umgesetzt, bei Bedarf änderbar
-- Kontowährung des Paper-Kontos und Umrechnung für EUR-Werte (spätestens Phase 5)
 
 ## Bekannte Probleme
-- macOS ist nur über den Rust-Build unter Windows abgedeckt (der macOS-Zweig wird mitkompiliert), aber nicht auf einem Mac getestet (Vibrancy, Fensterbuttons).
+- macOS ist nur über den Rust-Build unter Windows abgedeckt (der macOS-Zweig wird mitkompiliert), aber nicht auf einem Mac getestet (Vibrancy, Ampel-Buttons und deren Position).
