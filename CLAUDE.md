@@ -24,7 +24,7 @@ Planning happens in a separate Claude chat; Dennis pastes task prompts here. For
 - dockview (panel layout, `src/app/layout/`; panels are registered in `panels.ts`, layout persisted in localStorage)
 - TanStack Query for one-off requests (candles, search); live data in Zustand stores (`src/stores/quotes.ts`, `selection.ts`, `watchlist.ts`)
 - SQLite via tauri-plugin-sql (migrations in `src-tauri/src/db.rs`, access in `src/lib/native/database.ts`)
-- Planned: lightweight-charts
+- lightweight-charts 5 for candles (`src/panels/chart/`); chart times stay UTC, labels are formatted in local time
 
 ## Commands
 - `npm install` – install dependencies

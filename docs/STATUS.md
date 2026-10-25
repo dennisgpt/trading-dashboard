@@ -39,9 +39,9 @@ Board: [Trading Dashboard](https://github.com/users/dennisgpt/projects/1)
 - [x] #8 Watchlist (Gruppen, Sparkline, Live-Kurse, Suche, SQLite, gemeinsame Auswahl für Chart/Order)
 - [x] #9 Binance-Provider (REST + WebSocket, Reconnect, Verbindungsstatus in der Statusleiste, CSP)
 - [ ] #10 Finnhub-Provider (US-Aktien)
-- [ ] #11 Candlestick-Chart (lightweight-charts)
+- [x] #11 Candlestick-Chart (Kerzen + Volumen, 7 Zeiträume, Kopfzeile, letzte Kerze live, Theme-Farben)
 - [ ] #12 TradingView-Widget-Panel
-- [ ] #13 Hell/Dunkel-Umschalter (Grundlage steht seit #5; offen: Option „System“ in den Einstellungen, Charts/Widget)
+- [x] #13 Hell/Dunkel-Umschalter (seit #5; geprüft: färbt auch dockview und Chart um. Option „System“ kommt mit den Einstellungen in #14)
 - [ ] #14 Einstellungen + Onboarding für API-Keys (OS-Keychain)
 
 ## Offene Entscheidungen
