@@ -39,9 +39,11 @@ Siehe [ADR 0001](adr/0001-tech-stack.md).
 
 ## Trading
 - Zuerst eigene Paper-Trading-Engine (simuliertes Konto, Market-/Limit-Orders)
+- Kontowährung des Paper-Kontos: **USD** (Standard). Instrumente in EUR (z. B. Xetra-Aktien) werden beim Buchen zum aktuellen EUR/USD-Kurs umgerechnet. Eine Einstellung für ein EUR-Konto kommt später.
 - Später optional Broker-Adapter (Alpaca Paper, Binance Testnet)
 
 ## Design
+- Fensterbuttons: Windows eigene Buttons rechts, macOS native Ampel-Buttons links ([ADR 0004](adr/0004-fenster-titelleiste.md))
 - Clean, Glas-Look im Apple-Stil, Dark als Standard, Umschalter Hell/Dunkel
 - Mockups vor dem Coden
 

@@ -39,5 +39,7 @@ Zusammenhang: Ein Konto hat viele Orders. Jede gefüllte Order erzeugt genau ein
 - Beträge als `INTEGER` (Cent), Preise und Mengen als `REAL`, Zeitstempel als `INTEGER` (ms).
 - Das konkrete Schema mit Migrationen kommt mit der ersten Funktion, die speichert (Watchlist in Phase 4).
 
-## Offen
-- Kontowährung: vorerst eine Währung pro Konto (Standard USD). Trades in anderen Währungen (EUR-Aktien) brauchen einen Umrechnungskurs; das wird mit der Paper-Trading-Engine (Phase 5) entschieden.
+## Kontowährung
+- Ein Konto hat genau eine Währung, Standard **USD** (`PaperAccount.currency`).
+- Trades in Instrumenten mit anderer Währung (EUR-Aktien) werden beim Buchen zum aktuellen EUR/USD-Kurs in die Kontowährung umgerechnet. Der verwendete Kurs wird am Trade gespeichert (kommt mit der Paper-Trading-Engine in Phase 5).
+- Ein EUR-Konto als Einstellung kommt später.

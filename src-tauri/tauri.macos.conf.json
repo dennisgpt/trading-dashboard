@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Trading Dashboard",
+        "width": 1280,
+        "height": 800,
+        "minWidth": 1024,
+        "minHeight": 640,
+        "center": true,
+        "decorations": true,
+        "transparent": true,
+        "titleBarStyle": "Overlay",
+        "hiddenTitle": true,
+        "trafficLightPosition": { "x": 14, "y": 13 }
+      }
+    ]
+  }
+}
