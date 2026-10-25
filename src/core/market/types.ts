@@ -4,6 +4,9 @@
 /** Whether a price is streamed in real time or delayed by the source. */
 export type DataMode = "live" | "delayed";
 
+/** State of a provider's streaming connection, shown in the status bar. */
+export type ConnectionStatus = "connected" | "connecting" | "disconnected";
+
 export type Market = "crypto" | "us_stock" | "etf" | "de_stock" | "forex";
 
 export type Timeframe = "1m" | "5m" | "15m" | "1H" | "4H" | "1D" | "1W";
@@ -22,6 +25,8 @@ export const TIMEFRAME_MS: Record<Timeframe, number> = {
 export interface Instrument {
   /** Symbol as used by the data source, e.g. "BTCUSDT", "AAPL", "SAP.DE", "EUR/USD". */
   symbol: string;
+  /** Symbol for the UI when it differs from the source symbol, e.g. "BTC/USDT". */
+  displaySymbol?: string;
   name: string;
   market: Market;
   /** ISO 4217 code of the quote currency, e.g. "USD", "EUR", "USDT". */
@@ -49,6 +54,9 @@ export interface Quote {
   price: number;
   /** Change against the previous close (or 24h ago for crypto), in percent. */
   changePercent: number;
+  /** High and low of the current day (rolling 24h for crypto), if the source provides them. */
+  high?: number;
+  low?: number;
   /** Time of the price at the source, Unix epoch in milliseconds. */
   timestamp: number;
   dataMode: DataMode;

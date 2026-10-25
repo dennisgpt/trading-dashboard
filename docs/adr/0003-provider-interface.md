@@ -18,6 +18,8 @@ Ein gemeinsames Interface `MarketDataProvider` in `src/core/market/provider.ts`,
 | `searchInstruments(query, signal?)` | Symbolsuche |
 | `getCandles(symbol, timeframe, limit, signal?)` | Kerzen-Historie, älteste zuerst, letzte Kerze darf noch offen sein |
 | `subscribeQuotes(symbols, onQuote, onError?)` | Kurs-Stream, liefert eine Funktion zum Abbestellen |
+| `subscribeCandles(symbol, timeframe, onCandle)` | laufende (letzte, noch offene) Kerze; beginnt eine neue Periode, kommt eine Kerze mit späterer `time` |
+| `subscribeStatus(listener)` | Verbindungsstatus `connected` / `connecting` / `disconnected`, sofort und bei jeder Änderung (ergänzt mit #9) |
 
 - Zeitangaben sind Unix-Millisekunden, Timeframes `1m 5m 15m 1H 4H 1D 1W`.
 - Jeder `Quote` trägt `dataMode`, damit die UI das Badge „Live“ / „Verzögert“ ohne Rückfrage beim Provider zeigen kann.
@@ -37,6 +39,13 @@ Ein gemeinsames Interface `MarketDataProvider` in `src/core/market/provider.ts`,
 
 ### MockProvider
 `src/core/providers/mock/` erzeugt deterministische Testdaten ohne Netzwerk (feste Zufallsfolge pro Symbol, injizierbare Uhr). Er dient der Entwicklung der Panels, solange es keine echten Adapter gibt, und als Grundlage für Tests.
+
+### Binance (#9)
+- REST `https://data-api.binance.vision` (öffentliche Marktdaten-Domain, ohne Key): `/api/v3/klines` für Kerzen, `/api/v3/ticker/price` (≈160 kB, einmal geladen) für die Symbolsuche. `exchangeInfo` wäre ≈6 MB und wird deshalb nicht genutzt.
+- Ein gemeinsamer WebSocket `wss://data-stream.binance.vision/stream` für alle Abos, Streams `<symbol>@ticker` (Kurs, 24h-Änderung, Hoch/Tief) und `<symbol>@kline_<interval>` (laufende Kerze), an- und abgemeldet per SUBSCRIBE/UNSUBSCRIBE, gebündelt pro Tick (Limit 5 Nachrichten/s).
+- Reconnect mit exponentiellem Backoff (1 s, 2 s, 4 s … max. 30 s, ±20 % Zufall). Kommt 15 s lang keine Nachricht, gilt die Verbindung als tot (z. B. WLAN weg) und wird neu aufgebaut.
+- Der Status landet über `trackConnectionStatus` im Store `src/stores/connection.ts` und wird in der Statusleiste angezeigt. Nach einem Reconnect zählt der Store `reconnects` hoch, damit Panels ihre Historie neu laden.
+- Die Content-Security-Policy in `tauri.conf.json` erlaubt bei `connect-src` nur diese beiden Domains. Neue Provider müssen ihre Domains dort ergänzen.
 
 ## Konsequenzen
 - Panels und Stores importieren nur `core/market`, nie einen konkreten Adapter. Neue Quellen kommen ohne Änderungen an der UI dazu.
