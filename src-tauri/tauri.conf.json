@@ -12,12 +12,16 @@
   "app": {
     "windows": [
       {
+        "label": "main",
         "title": "Trading Dashboard",
-        "width": 1440,
-        "height": 900,
+        "width": 1280,
+        "height": 800,
         "minWidth": 1024,
         "minHeight": 640,
-        "center": true
+        "center": true,
+        "decorations": false,
+        "transparent": true,
+        "shadow": true
       }
     ],
     "security": {

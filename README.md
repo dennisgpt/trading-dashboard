@@ -4,7 +4,7 @@
 
 Ein modulares Trading-Dashboard für den Desktop (Windows & macOS). Charts, Watchlist und Paper-Trading in frei anordenbaren Fenstern, im cleanen Glas-Look mit Hell- und Dunkelmodus.
 
-> **Status:** in Entwicklung (Phase 1 – Setup). Arbeitstitel, der finale Name folgt.
+> **Status:** in Entwicklung (Phase 4 – MVP). Arbeitstitel, der finale Name folgt.
 
 ## Geplante Features
 
@@ -16,7 +16,7 @@ Ein modulares Trading-Dashboard für den Desktop (Windows & macOS). Charts, Watc
 
 ## Tech-Stack
 
-[Tauri 2](https://tauri.app) · React · TypeScript · Vite
+[Tauri 2](https://tauri.app) · React · TypeScript · Vite · Tailwind CSS · shadcn/ui · Zustand · Vitest
 
 ## Entwicklung
 

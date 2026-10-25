@@ -74,8 +74,9 @@ Ruhiges, dunkles Graphit mit Milchglas-Panels über einem nativen Fenster-Hinter
 - Charts und TradingView-Widget übernehmen das aktive Theme.
 
 ## Fenster
-- Transparentes Fenster ohne Systemdekoration, nativer Glas-Hintergrund:
-  - Windows 11: Mica
-  - Windows 10: Acrylic, sonst solider `bg`
-  - macOS: Vibrancy
-- Ohne Glas-Effekt fällt der Hintergrund auf `bg` zurück, Panels bleiben lesbar.
+- Transparentes Fenster ohne Systemdekoration (`decorations: false`, `transparent: true`), nativer Glas-Hintergrund über window-vibrancy (`src-tauri/src/window_effects.rs`):
+  - Windows 11: Mica, hell/dunkel folgt dem App-Theme (`setTheme` am Fenster)
+  - Windows 10: solider `bg`. Acrylic wäre möglich, ruckelt dort aber beim Verschieben und Vergrößern des Fensters.
+  - macOS: Vibrancy (`UnderWindowBackground`)
+- Das Frontend fragt beim Start per Command `window_effect` ab, ob ein Effekt aktiv ist. Nur dann wird die Seite transparent (`data-glass` am `<html>`), sonst bleibt der solide `bg`.
+- Eigene Fensterbuttons Minimieren / Maximieren (Wiederherstellen) / Schließen rechts in der Titelleiste, Ziehen und Doppelklick über `data-tauri-drag-region`. Startgröße 1280 × 800, Minimum 1024 × 640.

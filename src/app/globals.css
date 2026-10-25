@@ -161,6 +161,11 @@
     /* All numbers line up in columns (docs/design.md) */
     font-variant-numeric: tabular-nums;
   }
+  /* Native Mica / Vibrancy shows through; without it the solid --gg-bg stays. */
+  :root[data-glass],
+  :root[data-glass] body {
+    background: transparent;
+  }
 }
 
 @layer components {
