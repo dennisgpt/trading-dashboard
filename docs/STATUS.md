@@ -25,7 +25,7 @@ Board: [Trading Dashboard](https://github.com/users/dennisgpt/projects/1)
 - nichts
 
 ## Als Nächstes (Phase 3 – Architektur & Design)
-- [ ] #1 Ordnerstruktur & Architektur festlegen (ADR)
+- [x] #1 Ordnerstruktur & Architektur festlegen (ADR 0002)
 - [ ] #2 Provider-Interface für Marktdaten (ADR)
 - [ ] #3 Datenmodell (Instrument, Kurs, Watchlist, Paper-Konto)
 - [ ] #4 Design-Mockups (Glas-Look, Hell/Dunkel)

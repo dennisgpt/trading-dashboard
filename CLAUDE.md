@@ -45,6 +45,8 @@ Planning happens in a separate Claude chat; Dennis pastes task prompts here. For
 - Code, identifiers, comments and commit messages in English. UI text in German.
 - TypeScript strict mode, no `any` without a comment explaining why.
 - Function components + hooks. One panel per folder under `src/panels/`.
+- Folder structure and dependency rules: `docs/adr/0002-architektur.md`. `src/core/` stays free of React and Tauri imports. Import via the `@/` alias (`@/core/market/...`).
+- Market data runs in TypeScript; Rust only handles OS tasks (keychain, SQLite, window effects, notifications).
 - Market data access only through provider adapters (one interface, one adapter per source: Binance, Finnhub, Twelve Data ...). UI never calls an API directly.
 - Every price shown carries its data mode: `live` or `delayed`.
 
