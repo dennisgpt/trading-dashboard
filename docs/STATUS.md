@@ -28,7 +28,7 @@ Board: [Trading Dashboard](https://github.com/users/dennisgpt/projects/1)
 - [x] #1 Ordnerstruktur & Architektur festlegen (ADR 0002)
 - [x] #2 Provider-Interface für Marktdaten (ADR 0003, Registry, MockProvider, Vitest)
 - [x] #3 Datenmodell (`docs/datenmodell.md`)
-- [ ] #4 Design-Mockups (Glas-Look, Hell/Dunkel)
+- [x] #4 Design „Graphite Glass“ (`docs/design.md`)
 - [ ] #5 Tailwind + shadcn/ui einrichten
 - [ ] #6 Glas-Effekt mit window-vibrancy
 

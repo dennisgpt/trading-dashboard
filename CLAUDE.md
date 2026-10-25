@@ -44,6 +44,7 @@ Planning happens in a separate Claude chat; Dennis pastes task prompts here. For
 
 ## Code conventions
 - Code, identifiers, comments and commit messages in English. UI text in German.
+- Visual design ("Graphite Glass": tokens, panels, badges, light/dark): `docs/design.md`. In light mode never use the light accent `#A8CFFF` as text, use `accentFg`.
 - TypeScript strict mode, no `any` without a comment explaining why.
 - Function components + hooks. One panel per folder under `src/panels/`.
 - Folder structure and dependency rules: `docs/adr/0002-architektur.md`. `src/core/` stays free of React and Tauri imports. Import via the `@/` alias (`@/core/market/...`).
