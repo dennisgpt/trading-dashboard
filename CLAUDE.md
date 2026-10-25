@@ -25,6 +25,7 @@ Planning happens in a separate Claude chat; Dennis pastes task prompts here. For
 - `npm install` – install dependencies
 - `npm run tauri dev` – run the desktop app in dev mode
 - `npm run typecheck` – TypeScript check
+- `npm run test` – unit tests (Vitest), `npm run test:watch` while developing
 - `npm run build` – build frontend
 - `npm run tauri build` – build installer
 - In `src-tauri/`: `cargo fmt`, `cargo clippy -- -D warnings`
@@ -47,7 +48,8 @@ Planning happens in a separate Claude chat; Dennis pastes task prompts here. For
 - Function components + hooks. One panel per folder under `src/panels/`.
 - Folder structure and dependency rules: `docs/adr/0002-architektur.md`. `src/core/` stays free of React and Tauri imports. Import via the `@/` alias (`@/core/market/...`).
 - Market data runs in TypeScript; Rust only handles OS tasks (keychain, SQLite, window effects, notifications).
-- Market data access only through provider adapters (one interface, one adapter per source: Binance, Finnhub, Twelve Data ...). UI never calls an API directly.
+- Market data access only through provider adapters (one interface, one adapter per source: Binance, Finnhub, Twelve Data ...). UI never calls an API directly. Interface and registry: `docs/adr/0003-provider-interface.md`.
+- Logic in `src/core/` gets Vitest tests next to the code (`*.test.ts`).
 - Every price shown carries its data mode: `live` or `delayed`.
 
 ## Security
