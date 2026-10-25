@@ -27,7 +27,7 @@ Ruhiges, dunkles Graphit mit Milchglas-Panels über einem nativen Fenster-Hinter
 ```
 - **Titelleiste:** eigene Leiste (keine Systemdekoration), ziehbar, mit dauerhaftem Badge **„Paper“** (Paper-Trading ist immer sichtbar) und eigenen Buttons Minimieren / Maximieren / Schließen.
 - **Seitenleiste links:** schmal, nur Icons (Panels, Einstellungen).
-- **Arbeitsbereich:** Panels mit 8 px Abstand. Später frei andockbar (dockview, Phase 4).
+- **Arbeitsbereich:** dockview mit 8 px Abstand zwischen den Gruppen. Panels lassen sich über ihren Tab verschieben, als Tabs gruppieren, abdocken (schwebend) und schließen; das Menü „Panels“ in der Titelleiste öffnet sie wieder und setzt das Layout zurück. Styling in `src/app/layout/dockview-theme.css`.
 - **Statusleiste unten:** Status jeder Datenquelle (verbunden / verzögert / getrennt), Uhrzeit.
 
 ## Panels

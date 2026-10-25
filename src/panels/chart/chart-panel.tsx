@@ -1,9 +1,7 @@
-import { Panel, PanelPlaceholder } from "@/components/panel";
+import { PanelPlaceholder } from "@/components/panel";
 
 export function ChartPanel() {
   return (
-    <Panel title="Chart">
-      <PanelPlaceholder>Kein Instrument ausgewählt.</PanelPlaceholder>
-    </Panel>
+    <PanelPlaceholder>Kein Instrument ausgewählt.</PanelPlaceholder>
   );
 }

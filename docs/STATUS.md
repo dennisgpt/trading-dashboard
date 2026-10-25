@@ -35,7 +35,7 @@ Board: [Trading Dashboard](https://github.com/users/dennisgpt/projects/1)
 - nichts
 
 ## Als Nächstes (Phase 4 – MVP v0.1.0)
-- [ ] #7 Panel-Layout mit dockview (Layout speichern)
+- [x] #7 Panel-Layout mit dockview (verschieben, Tabs, abdocken, schließen/öffnen über „Panels“, Layout gespeichert, zurücksetzbar)
 - [ ] #8 Watchlist mit Live/Verzögert-Badge
 - [ ] #9 Binance-WebSocket-Provider (Krypto)
 - [ ] #10 Finnhub-Provider (US-Aktien)

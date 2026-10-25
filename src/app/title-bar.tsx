@@ -3,6 +3,7 @@ import { PaperBadge } from "@/components/badges";
 import { Button } from "@/components/ui/button";
 import { isMacDesktop } from "@/lib/native/platform";
 import { cn } from "@/lib/utils";
+import { PanelsMenu } from "./layout/panels-menu";
 import { useTheme } from "./use-theme";
 import { WindowControls } from "./window-controls";
 
@@ -22,6 +23,7 @@ export function TitleBar() {
       </span>
       <PaperBadge />
       <div data-tauri-drag-region className="h-full flex-1" />
+      <PanelsMenu />
       <Button
         variant="ghost"
         size="icon-sm"

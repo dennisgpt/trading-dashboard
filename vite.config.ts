@@ -17,6 +17,11 @@ export default defineConfig(() => ({
     },
   },
 
+  // The bundle is loaded from disk by the desktop app, so a large single chunk is fine.
+  build: {
+    chunkSizeWarningLimit: 2000,
+  },
+
   test: {
     include: ["src/**/*.test.ts"],
     environment: "node",
