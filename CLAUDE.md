@@ -21,7 +21,8 @@ Planning happens in a separate Claude chat; Dennis pastes task prompts here. For
 - React 19 + TypeScript + Vite (frontend in `src/`)
 - Tailwind CSS v4 + shadcn/ui (theme in `src/app/globals.css`, components via `npx shadcn@latest add <name>`), Zustand, Inter
 - window-vibrancy (Mica on Windows 11, Vibrancy on macOS) with a custom title bar; Tauri window calls go through `src/lib/native/`
-- Planned: dockview (panel layout), lightweight-charts, TanStack Query, SQLite via tauri-plugin-sql
+- dockview (panel layout, `src/app/layout/`; panels are registered in `panels.ts`, layout persisted in localStorage)
+- Planned: lightweight-charts, TanStack Query, SQLite via tauri-plugin-sql
 
 ## Commands
 - `npm install` – install dependencies
