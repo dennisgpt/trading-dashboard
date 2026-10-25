@@ -22,7 +22,9 @@ Planning happens in a separate Claude chat; Dennis pastes task prompts here. For
 - Tailwind CSS v4 + shadcn/ui (theme in `src/app/globals.css`, components via `npx shadcn@latest add <name>`), Zustand, Inter
 - window-vibrancy (Mica on Windows 11, Vibrancy on macOS) with a custom title bar; Tauri window calls go through `src/lib/native/`
 - dockview (panel layout, `src/app/layout/`; panels are registered in `panels.ts`, layout persisted in localStorage)
-- Planned: lightweight-charts, TanStack Query, SQLite via tauri-plugin-sql
+- TanStack Query for one-off requests (candles, search); live data in Zustand stores (`src/stores/quotes.ts`, `selection.ts`, `watchlist.ts`)
+- SQLite via tauri-plugin-sql (migrations in `src-tauri/src/db.rs`, access in `src/lib/native/database.ts`)
+- Planned: lightweight-charts
 
 ## Commands
 - `npm install` – install dependencies
