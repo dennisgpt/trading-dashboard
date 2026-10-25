@@ -71,7 +71,7 @@ Ruhiges, dunkles Graphit mit Milchglas-Panels über einem nativen Fenster-Hinter
 ## Hell/Dunkel
 - Dunkel ist Standard. Hell über Klasse `.light` bzw. `data-theme="light"` am `<html>`-Element.
 - Auswahl „Dunkel / Hell / System“ wird gespeichert.
-- Charts und TradingView-Widget übernehmen das aktive Theme.
+- Charts und TradingView-Widget übernehmen das aktive Theme. Der Candlestick-Chart liest die Farben (`--gg-up`, `--gg-down`, `--gg-grid`, `--gg-muted`, `--gg-border`, `--gg-accent-fg`) zur Laufzeit aus den CSS-Variablen.
 
 ## Fenster
 - Transparentes Fenster ohne Systemdekoration (`decorations: false`, `transparent: true`), nativer Glas-Hintergrund über window-vibrancy (`src-tauri/src/window_effects.rs`):
