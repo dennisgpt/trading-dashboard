@@ -1,3 +1,4 @@
+mod db;
 mod window_effects;
 
 use tauri::Manager;
@@ -15,6 +16,11 @@ fn window_effect(state: tauri::State<'_, ActiveWindowEffect>) -> WindowEffect {
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
+        .plugin(
+            tauri_plugin_sql::Builder::default()
+                .add_migrations(db::DATABASE_URL, db::migrations())
+                .build(),
+        )
         .setup(|app| {
             let effect = match app.get_webview_window("main") {
                 Some(window) => window_effects::apply(&window),

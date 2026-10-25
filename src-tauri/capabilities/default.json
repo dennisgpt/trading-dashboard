@@ -1,7 +1,7 @@
 {
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
-  "description": "Capability for the main window: custom title bar controls and native theme",
+  "description": "Capability for the main window: custom title bar controls, native theme, app database",
   "windows": [
     "main"
   ],
@@ -12,6 +12,8 @@
     "core:window:allow-toggle-maximize",
     "core:window:allow-close",
     "core:window:allow-start-dragging",
-    "core:window:allow-set-theme"
+    "core:window:allow-set-theme",
+    "sql:default",
+    "sql:allow-execute"
   ]
 }

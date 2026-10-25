@@ -49,6 +49,18 @@ export class ProviderRegistry {
   }
 
   /**
+   * Searches all providers in parallel and concatenates the results in registration order.
+   * Fails only if every provider fails, so one unreachable source does not break the search.
+   */
+  async searchInstruments(query: string, signal?: AbortSignal): Promise<Instrument[]> {
+    const results = await Promise.allSettled(this.list().map((p) => p.searchInstruments(query, signal)));
+    const found = results.flatMap((r) => (r.status === "fulfilled" ? r.value : []));
+    const failure = results.find((r): r is PromiseRejectedResult => r.status === "rejected");
+    if (found.length === 0 && failure && results.every((r) => r.status === "rejected")) throw failure.reason;
+    return found;
+  }
+
+  /**
    * Subscribes to quotes for instruments from several sources at once,
    * one subscription per provider. The returned function stops all of them.
    */

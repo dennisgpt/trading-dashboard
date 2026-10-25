@@ -71,6 +71,17 @@ describe("ProviderRegistry", () => {
     expect(unsubStocks).toHaveBeenCalledTimes(1);
   });
 
+  it("searches all providers and tolerates a failing one", async () => {
+    const { registry, crypto, delayedStocks } = setup();
+    vi.spyOn(delayedStocks, "searchInstruments").mockRejectedValue(new Error("offline"));
+    const results = await registry.searchInstruments("a");
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.every((i) => i.providerId !== "delayed")).toBe(true);
+
+    for (const p of [crypto, delayedStocks, registry.get("live")!]) vi.spyOn(p, "searchInstruments").mockRejectedValue(new Error("offline"));
+    await expect(registry.searchInstruments("a")).rejects.toThrow("offline");
+  });
+
   it("starts no subscription if one instrument has no provider", () => {
     const { registry, crypto } = setup();
     const spy = vi.spyOn(crypto as MarketDataProvider, "subscribeQuotes");

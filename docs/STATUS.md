@@ -36,7 +36,7 @@ Board: [Trading Dashboard](https://github.com/users/dennisgpt/projects/1)
 
 ## Als Nächstes (Phase 4 – MVP v0.1.0)
 - [x] #7 Panel-Layout mit dockview (verschieben, Tabs, abdocken, schließen/öffnen über „Panels“, Layout gespeichert, zurücksetzbar)
-- [ ] #8 Watchlist mit Live/Verzögert-Badge
+- [x] #8 Watchlist (Gruppen, Sparkline, Live-Kurse, Suche, SQLite, gemeinsame Auswahl für Chart/Order)
 - [x] #9 Binance-Provider (REST + WebSocket, Reconnect, Verbindungsstatus in der Statusleiste, CSP)
 - [ ] #10 Finnhub-Provider (US-Aktien)
 - [ ] #11 Candlestick-Chart (lightweight-charts)
