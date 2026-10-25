@@ -1,4 +1,5 @@
 import { useEffect, useSyncExternalStore } from "react";
+import { setWindowTheme } from "@/lib/native/window";
 import { applyTheme, resolveTheme, useThemeStore, type Theme, type ThemePreference } from "@/stores/theme";
 
 const DARK_QUERY = "(prefers-color-scheme: dark)";
@@ -26,6 +27,8 @@ export function useTheme(): {
   const theme = resolveTheme(preference, prefersDark);
 
   useEffect(() => applyTheme(theme), [theme]);
+  // With "system" the native theme must follow the OS, otherwise it would pin prefers-color-scheme.
+  useEffect(() => void setWindowTheme(preference === "system" ? null : theme), [preference, theme]);
 
   return { theme, preference, setPreference, toggle: () => setPreference(theme === "dark" ? "light" : "dark") };
 }
