@@ -19,7 +19,8 @@ Planning happens in a separate Claude chat; Dennis pastes task prompts here. For
 ## Stack
 - Tauri 2 (Rust backend in `src-tauri/`)
 - React 19 + TypeScript + Vite (frontend in `src/`)
-- Planned: Tailwind + shadcn/ui, dockview (panel layout), lightweight-charts, TanStack Query, Zustand, SQLite via tauri-plugin-sql, window-vibrancy (glass effect)
+- Tailwind CSS v4 + shadcn/ui (theme in `src/app/globals.css`, components via `npx shadcn@latest add <name>`), Zustand, Inter
+- Planned: dockview (panel layout), lightweight-charts, TanStack Query, SQLite via tauri-plugin-sql, window-vibrancy (glass effect)
 
 ## Commands
 - `npm install` – install dependencies
